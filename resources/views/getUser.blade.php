@@ -1,0 +1,1 @@
+<h1>get user name here: {{$name}}</h1>
