@@ -15,4 +15,19 @@ Route::get('/home', function () {
 // method 2 for routing  for opening view only
 Route::view('/home1', 'home');
 
-// pass data with routing:
+// pass data with routing:  m1
+// Route::get('/about/{name}', function($name){
+//     echo $name;
+//     return view('about');
+// });
+
+
+// pass data with routing:  m2  check about.blade.php
+Route::get('/about/{name}', function($name){
+    return view('about', ['name' => $name]);
+});
+
+
+// temporarily removal of route  
+Route::redirect('/home','/');  //redirects home to root page
+
