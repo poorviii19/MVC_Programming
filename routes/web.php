@@ -1,5 +1,8 @@
 <?php
 
+// to use this file go to bootstrap folder in the main folder 
+// and then go to app.php then web: _DIR_.......web.php  uncomment as per the sue
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -43,6 +46,10 @@ Route::get('username1/{name}',[UserController::class, 'getUserName1']);
 
 // nested view
 Route::get('admin',[UserController::class, 'adminLogin']);
+Route::get('admin1',[UserController::class, 'adminLogin1']);
+Route::view('/admin-home','admin.home');
+Route::view('student', 'student');
+Route::view('student/{name}', [UserController::class,'student']);
 
 
 ?>

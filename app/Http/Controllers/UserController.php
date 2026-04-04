@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+// for checking view exists or not?
+use Illuminate\Support\Facades\View;
+
+
+//understanding controller, view and basic routing for them
+
 class UserController extends Controller
 {
     //calling controller
@@ -35,4 +41,17 @@ class UserController extends Controller
      function adminLogin(){
         return view('admin.login');
      }
+
+     function student($name){
+        return view('student',['user'=>$name]);
+     }
+
+     function adminLogin1(){
+        if(View::exists('admin.sign'))
+        {
+        return view('admin.login');
+        }else{
+            return "view not found";
+     }
+    }
 }
