@@ -13,5 +13,8 @@ Route::get('subview', function(){
 });
 
 Route::get('user-about',[bladetemplateController::class, 'userAbout']);
+Route::get('comp', function(){
+    return view('homeComponent');
+});
 
 ?>
