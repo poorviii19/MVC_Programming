@@ -11,4 +11,13 @@ class bladetemplateController extends Controller
         $users = ["abc", "bcd", "cde"];
         return view('blade1', ['name'=>$name, 'users'=>$users]);
     }
+
+
+    function userHome(){
+        return view('home');
+    }
+
+    function userAbout(){
+        return view('abouts');
+    }
 }

@@ -12,4 +12,6 @@ Route::get('subview', function(){
     return view('home');
 });
 
+Route::get('user-about',[bladetemplateController::class, 'userAbout']);
+
 ?>

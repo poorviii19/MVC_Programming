@@ -54,4 +54,6 @@ class UserController extends Controller
             return "view not found";
      }
     }
+
+
 }
