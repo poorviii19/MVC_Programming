@@ -5,7 +5,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\bladetemplateController;
+use App\Http\Controllers\UserController;
 
 Route::get('blade1', [bladetemplateController::class,'blade1']);
+Route::get('subview', function(){
+    return view('home');
+});
 
 ?>

@@ -1,3 +1,2 @@
-<div>
-    <!-- Simplicity is an acquired taste. - Katharine Gerould -->
-</div>
+
+<h1 style = "color: green">Header in subview</h1>
