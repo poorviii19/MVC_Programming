@@ -12,7 +12,14 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->alias([
+            'checkAge' => \App\Http\Middleware\CheckAge::class,
+        ]);
+        $middleware->group('adminGroup', [
+            'auth',
+            'checkAge',
+        ]);
+        //instead of repaeting middleware again and again we can create group and use it in controller
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

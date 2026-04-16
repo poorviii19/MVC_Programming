@@ -6,6 +6,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\bladetemplateController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Controller;
 
 Route::get('blade1', [bladetemplateController::class,'blade1']);
 Route::get('subview', function(){
@@ -16,5 +17,7 @@ Route::get('user-about',[bladetemplateController::class, 'userAbout']);
 Route::get('comp', function(){
     return view('homeComponent');
 });
+
+Route::get('/test', [UserController::class, 'index']);
 
 ?>
