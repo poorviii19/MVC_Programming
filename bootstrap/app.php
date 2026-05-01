@@ -21,6 +21,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'checkAge',
         ]);
         //instead of repaeting middleware again and again we can create group and use it in controller
+        $middleware->web(append:[\App\Http\Middleware\SetLocale::class]);
+        // we can also create custom middleware and add it to the web group so that it will be applied to all the routes in the web group
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

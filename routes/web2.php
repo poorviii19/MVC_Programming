@@ -70,4 +70,12 @@ Route::get('/set-lang/{lang}', function($lang){
     return redirect('/lang');
 });
 
+Route::get('/lang/{locale}',function ($locale){
+    Session::put('locale',$locale);
+    return redirect('/');
+});
+
+Route::get('/', function(){
+    return view('hom1');
+});
 ?>
