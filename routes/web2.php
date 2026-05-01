@@ -49,4 +49,25 @@ Route::get('/set', function(Request $request){
 Route::get('/now-test', function(Request $request){
     return view('now');
 });
+
+//localisation: 
+// localisation is the process of translating the content of your application into different languages and adapting it to different cultures. Laravel provides a powerful localization system that allows you to easily manage translations and switch between languages.
+
+// laarvel inbuilt functions for localisation:
+
+// __(): This function is used to retrieve the translation of a given key. It accepts the key as an argument and returns the corresponding translation based on the current locale. For example, __('welcome') will return the translation for the 'welcome' key in the current language
+
+//@lang: This directive is used in Blade templates to specify the language for a specific section of the template. It allows you to define different translations for different parts of your view. For example, @lang('welcome') will display the translation for the 'welcome' key in the current language.
+
+Route::get('/lang',function(request $request){
+    return view('lang');
+});
+
+Route::get('/set-lang/{lang}', function($lang){
+    if(in_array($lang, ['english', 'spanish', 'hindi'])){
+        session(['locale'=>$lang]);
+    }
+    return redirect('/lang');
+});
+
 ?>
