@@ -108,4 +108,13 @@ Route::resource('resource',ResourceController::class);
 
 Route::get('/pincode-form', [FormController::class, 'showPincodeForm']);
 Route::post('/submit-pincode', [FormController::class, 'submitPincode']);
+
+
+Route::get('/', function() {
+    return view('form1');
+});
+Route::get('/formfinal', function() {
+    return view('form1');
+});
+Route::post('/submitfinal-form', [FormController::class, 'submitform1']);
 ?>
