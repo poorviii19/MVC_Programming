@@ -2,8 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\FormController;
+use App\Http\Controllers\ResourceController;
 use Illuminate\Http\Request;
-
+use Illuminate\support\Facades\App;
+use Illuminate\support\Facades\Session;
 
 Route::get('/post',[BlogController::class, 'getBlog']);
 // Route::get('/ye', function(Request $request){
@@ -64,7 +67,7 @@ Route::get('/lang',function(request $request){
 });
 
 Route::get('/set-lang/{lang}', function($lang){
-    if(in_array($lang, ['english', 'spanish', 'hindi'])){
+    if(in_array($lang, ['en', 'es', 'hi'])){
         session(['locale'=>$lang]);
     }
     return redirect('/lang');
@@ -78,4 +81,26 @@ Route::get('/lang/{locale}',function ($locale){
 Route::get('/', function(){
     return view('hom1');
 });
+
+Route::get('/company', function (Request $request) {
+    return view('company');
+})->name('company');
+
+// Language switch
+Route::get('/lang/{locale}', function ($locale) {
+
+    $availableLocales = ['en', 'hi', 'es'];
+
+    if (in_array($locale, $availableLocales)) {
+        Session::put('locale', $locale);
+    }
+
+    return redirect()->route('company');
+});
+
+
+Route::get('/form', [FormController::class, 'showForm']);
+Route::post('/submit-form', [FormController::class, 'submitFrom']);
+
+Route::resource('resource',ResourceController::class);
 ?>
