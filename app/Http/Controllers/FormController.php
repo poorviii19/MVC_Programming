@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Rules\checkUpperCase;
 
 class FormController extends Controller
 {
@@ -16,7 +17,7 @@ class FormController extends Controller
 
         // print_r($request->all());
         $request->validate([
-            'name'=>'required',
+            'name'=>['required', new checkUpperCase],
             'email'=>'required|email',
             'password'=>'required|min:6'
         ]);

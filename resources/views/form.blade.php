@@ -1,7 +1,7 @@
 <form action = "/resource/5" method = "post">
     @csrf
     <!-- @method('DELETE') -->
-    @method('PUT')
+    @method('DELETE')
     <br>
     <br>
     User Name: <input type = "text" name = "uname" required>
