@@ -22,4 +22,23 @@ class FormController extends Controller
         ]);
         return "Form Submitted successfully";
     }
+
+
+    public function showPincodeForm()
+    {
+        return view('pincode');
+    }
+
+    public function submitPincode(Request $request)
+    {
+        $request->validate([
+            'pincode' => 'required|numeric|digits:6'
+        ], [
+            'pincode.required' => 'Pincode field is required.',
+            'pincode.numeric' => 'Pincode must contain only numbers.',
+            'pincode.digits' => 'Pincode must contain exactly 6 digits.'
+        ]);
+
+        return "Pincode Submitted Successfully";
+    }
 }

@@ -103,4 +103,9 @@ Route::get('/form', [FormController::class, 'showForm']);
 Route::post('/submit-form', [FormController::class, 'submitFrom']);
 
 Route::resource('resource',ResourceController::class);
+
+
+
+Route::get('/pincode-form', [FormController::class, 'showPincodeForm']);
+Route::post('/submit-pincode', [FormController::class, 'submitPincode']);
 ?>
