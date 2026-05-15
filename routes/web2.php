@@ -117,4 +117,21 @@ Route::get('/formfinal', function() {
     return view('form1');
 });
 Route::post('/submitfinal-form', [FormController::class, 'submitform1']);
+
+Route::get('/insert',function(){
+    // DB::table('employees')->insert([
+    // 'empname'=>"John",
+    // 'salaary'=>50000,
+    // 'isuser'=>1,
+    // 'birth_date'=>"2005-05-19"
+    // ]);
+
+    Employee::create([
+        'empname'=>'Sreyanshi',
+        'salary'=>200000,
+        'isuser'=>1,
+        'birthdate'=>'2005-07-23'
+    ]);
+    return 'Inserted';
+});
 ?>
