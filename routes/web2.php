@@ -204,11 +204,11 @@ Route::get('delete-recepie', function(){
     
 });
 
-//to delete the table
-// Route::get('update-recepie', function(){
-//     return DB::table('recepies')->truncate;
+// to delete the table
+Route::get('update-recepie', function(){
+    return DB::table('recepies')->truncate;
     
-// });
+});
 
 
 // ORM
@@ -232,4 +232,31 @@ Route::get('insertrecepie', function(){
 
     return "Recipe Inserted Successfully";
 });
+
+
+Route::get('allrecepies', function(){
+    return Recepie::all();
+});
+
+Route::get('specificrecepie', function(){
+    return Recepie::find(2);
+});
+
+Route::get('specific-recepie-condition', function(){
+    return Recepie::where('price', '>', 200)->get();
+});
+
+Recepie::where('price', '>', 200)->update(['price'=>250]);
+
+Recepie::get()->where('id', 1)->first()->update(['price'=>250]);
+
+Route::get('updaterecepie', function(){
+    return Recepie::where('id', 1)->update(['price'=>250]);
+});
+
+Route::get('deleterecipe', function(){
+    return Recepie::where('id', 2)->delete();
+});
+
+Recepie::destroy(2);
 ?>
