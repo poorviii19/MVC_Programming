@@ -134,4 +134,52 @@ Route::get('/insert',function(){
     ]);
     return 'Inserted';
 });
+
+
+
+Route::get('/insertit', function () {
+
+    DB::table('recepies')->insert([
+
+        [
+            'reccepie_name' => 'Paneer Butter Masala',
+            'price' => 250,
+            'description' => 'Creamy tomato based paneer curry with rich Indian spices.',
+            'ingredients' => 'Paneer, Tomato, Butter, Cream, Onion, Spices',
+            'created_at' => now(),
+            'updated_at' => now()
+        ],
+
+        [
+            'reccepie_name' => 'Veg Biryani',
+            'price' => 180,
+            'description' => 'Aromatic basmati rice cooked with vegetables and spices.',
+            'ingredients' => 'Rice, Carrot, Beans, Onion, Spices, Mint',
+            'created_at' => now(),
+            'updated_at' => now()
+        ],
+
+        [
+            'reccepie_name' => 'Margherita Pizza',
+            'price' => 320,
+            'description' => 'Classic Italian pizza with cheese and tomato sauce.',
+            'ingredients' => 'Cheese, Tomato Sauce, Flour, Basil, Olive Oil',
+            'created_at' => now(),
+            'updated_at' => now()
+        ],
+
+        [
+            'reccepie_name' => 'Chocolate Brownie',
+            'price' => 150,
+            'description' => 'Soft and rich chocolate brownie dessert.',
+            'ingredients' => 'Chocolate, Flour, Butter, Sugar, Cocoa Powder',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]
+
+    ]);
+
+    return "4 recipes inserted successfully";
+
+});
 ?>

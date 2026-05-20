@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('recepies', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("reccepie_name");
+            $table->string("recepie_name");
             $table->double("price");
             $table->text("description");
             $table->text("ingredients");
