@@ -200,7 +200,7 @@ Route::get('update-recepie', function(){
     
 });
 Route::get('delete-recepie', function(){
-    return DB::table('recepies')->where('id', 3)->delete(['price'=>300]);
+    return DB::table('recepies')->where('id', 3)->delete();
     
 });
 
@@ -209,4 +209,27 @@ Route::get('delete-recepie', function(){
 //     return DB::table('recepies')->truncate;
     
 // });
+
+
+// ORM
+
+use App\Models\Recepie;
+
+
+Route::get('insertrecepie', function(){
+    Recepie::create([
+        'recepie_name' => 'Burger',
+        'price' => 199,
+        'description' => 'Cheesy crispy burger',
+        'ingredients' => 'Bun, Cheese, Patty, Onion'
+    ]);
+    Recepie::create([
+        'recepie_name' => 'Chowmin',
+        'price' => 199,
+        'description' => 'tasty chowmin',
+        'ingredients' => 'noodles, veggies, oils, spices'
+    ]);
+
+    return "Recipe Inserted Successfully";
+});
 ?>
