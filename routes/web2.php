@@ -142,7 +142,7 @@ Route::get('/insertit', function () {
     DB::table('recepies')->insert([
 
         [
-            'reccepie_name' => 'Paneer Butter Masala',
+            'recepie_name' => 'Paneer Butter Masala',
             'price' => 250,
             'description' => 'Creamy tomato based paneer curry with rich Indian spices.',
             'ingredients' => 'Paneer, Tomato, Butter, Cream, Onion, Spices',
@@ -151,7 +151,7 @@ Route::get('/insertit', function () {
         ],
 
         [
-            'reccepie_name' => 'Veg Biryani',
+            'recepie_name' => 'Veg Biryani',
             'price' => 180,
             'description' => 'Aromatic basmati rice cooked with vegetables and spices.',
             'ingredients' => 'Rice, Carrot, Beans, Onion, Spices, Mint',
@@ -160,7 +160,7 @@ Route::get('/insertit', function () {
         ],
 
         [
-            'reccepie_name' => 'Margherita Pizza',
+            'recepie_name' => 'Margherita Pizza',
             'price' => 320,
             'description' => 'Classic Italian pizza with cheese and tomato sauce.',
             'ingredients' => 'Cheese, Tomato Sauce, Flour, Basil, Olive Oil',
@@ -169,7 +169,7 @@ Route::get('/insertit', function () {
         ],
 
         [
-            'reccepie_name' => 'Chocolate Brownie',
+            'recepie_name' => 'Chocolate Brownie',
             'price' => 150,
             'description' => 'Soft and rich chocolate brownie dessert.',
             'ingredients' => 'Chocolate, Flour, Butter, Sugar, Cocoa Powder',
@@ -182,4 +182,31 @@ Route::get('/insertit', function () {
     return "4 recipes inserted successfully";
 
 });
+
+Route::get('all->recepies', function(){
+    return DB::table('recepies')->get();
+});
+
+Route::get('sort-recepie', function () {
+
+    return DB::table('recepies')
+            ->orderBy('recepie_name')
+            ->get();
+
+});
+
+Route::get('update-recepie', function(){
+    return DB::table('recepies')->where('id', 1)->update(['price'=>300]);
+    
+});
+Route::get('update-recepie', function(){
+    return DB::table('recepies')->where('id', 3)->delete(['price'=>300]);
+    
+});
+
+//to delete the table
+// Route::get('update-recepie', function(){
+//     return DB::table('recepies')->truncate;
+    
+// });
 ?>
