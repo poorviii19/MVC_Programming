@@ -199,7 +199,7 @@ Route::get('update-recepie', function(){
     return DB::table('recepies')->where('id', 1)->update(['price'=>300]);
     
 });
-Route::get('update-recepie', function(){
+Route::get('delete-recepie', function(){
     return DB::table('recepies')->where('id', 3)->delete(['price'=>300]);
     
 });
