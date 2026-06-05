@@ -89,5 +89,24 @@ Route::get('/strings/{slug}', function($slug){
     return $slug;
 })->whereAlphaNumeric('slug');
 
+// debug route:
+Route::get('/debug/{value}', function ($value) {
 
+    if (is_numeric($value)) {
+        return "Number detected";
+    }
+
+    return "String detected";
+});
+
+// reverse text:
+Route::get('/reverse/{text}', function ($text) {
+    return strrev($text);
+});
+
+
+// example:
+Route::get('/shop/{category}/{pdId}', function($category, $pdId){
+    return "Category: $category, Product id: $pdId";
+})->where('pdId', '[0-9]+');
 ?>
