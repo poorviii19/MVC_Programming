@@ -109,4 +109,13 @@ Route::get('/reverse/{text}', function ($text) {
 Route::get('/shop/{category}/{pdId}', function($category, $pdId){
     return "Category: $category, Product id: $pdId";
 })->where('pdId', '[0-9]+');
+
+
+// passing data to views:
+// M1: using an array:
+Route::get('/views', function(){
+    return view('data',[
+    'name' => 'XYZ'
+    ]);
+});
 ?>
