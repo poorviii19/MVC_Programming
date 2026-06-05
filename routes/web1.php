@@ -118,4 +118,12 @@ Route::get('/views', function(){
     'name' => 'XYZ'
     ]);
 });
+
+// M2: Compact()
+Route::get('/profile', function(){
+    $name = "ABC";
+    $age =  21;
+
+    return view('profile', compact('name', 'age'));
+});
 ?>
