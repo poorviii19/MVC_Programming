@@ -20,4 +20,31 @@ Route::get('comp', function(){
 
 Route::get('/test', [UserController::class, 'index']);
 
+
+// practice session:
+
+
+Route::get('/', function(){
+    return 'welcome to laravel';
+});
+
+Route::get('/about', function(){
+    return 'This is about page';
+});
+
+Route::get('/contact', function(){
+    return "This is Poorvi's contact page";
+});
+
+Route::get('/services', function(){
+    return 'welcome, we are pleased to serve you our services';
+});
+
+Route::get('/products', function(){
+    return "welcome to our product page";
+});
+
+Route::get('/team', function(){
+    return "hello, our team is always ready to help you!";
+});
 ?>
