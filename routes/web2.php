@@ -246,7 +246,7 @@ Route::get('specific-recepie-condition', function(){
     return Recepie::where('price', '>', 200)->get();
 });
 
-Recepie::where('price', '>', 200)->update(['price'=>250]);
+// Recepie::where('price', '>', 200)->update(['price'=>250]);
 
 Recepie::get()->where('id', 1)->first()->update(['price'=>250]);
 
