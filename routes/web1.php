@@ -74,4 +74,20 @@ Route::get('/student/{id?}', function($id = null){
     return $id ? "Student id is $id" : "Student id is not mentioned";
 });
 
+
+//Constraints:
+
+Route::get('/number/{id}', function($id){
+    return $id;
+})->where('id' ,'[0-9]+');
+
+Route::get('/string/{name}', function($name){
+    return $name;
+})->whereAlpha('name','[A-Z]+');
+
+Route::get('/strings/{slug}', function($slug){
+    return $slug;
+})->whereAlphaNumeric('slug');
+
+
 ?>
