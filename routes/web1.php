@@ -126,4 +126,13 @@ Route::get('/profile', function(){
 
     return view('profile', compact('name', 'age'));
 });
+
+
+
+// Passing arrays to views and route parameters:
+Route::get('/arrays/{id}', function($id){
+    $users = ["ABC", "XYZ", "MNO"];
+
+    return view('array', compact('users', 'id'));
+});
 ?>
