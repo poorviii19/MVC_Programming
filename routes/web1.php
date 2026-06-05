@@ -47,4 +47,20 @@ Route::get('/products', function(){
 Route::get('/team', function(){
     return "hello, our team is always ready to help you!";
 });
+
+
+// Routing with parameters:
+
+Route::get('user/{id}', function($id){
+    return "User id: " .$id;
+});
+
+Route::get('/product/{productId}', function($productId){
+    return "Product ID is: " .$productId;
+});
+
+Route::get('/users/{id}/posts/{postId}', function($id, $postId){
+    return "User id is: $id, Post id is: $postId";
+});
+
 ?>
