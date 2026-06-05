@@ -63,4 +63,15 @@ Route::get('/users/{id}/posts/{postId}', function($id, $postId){
     return "User id is: $id, Post id is: $postId";
 });
 
+
+
+// Routing with optional parameters:
+Route::get('/users/{id?}', function($id = null){
+    return $id? "Hello, your id is: $id" : "Null";
+});
+
+Route::get('/student/{id?}', function($id = null){
+    return $id ? "Student id is $id" : "Student id is not mentioned";
+});
+
 ?>
