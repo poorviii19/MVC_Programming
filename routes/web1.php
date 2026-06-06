@@ -135,4 +135,14 @@ Route::get('/arrays/{id}', function($id){
 
     return view('array', compact('users', 'id'));
 });
+
+
+
+// Sharing of data with all views:
+
+//refer AppServiceProvider
+Route::get('/prac', function(){
+    return view('prac');
+});
+
 ?>
