@@ -167,4 +167,18 @@ Route::get('/multi', function(){
     ->header('X-version', '1.0');
 });
 
+
+// Headers with Views:
+Route::get('/header', function(){
+    return response()
+    ->view('welcome')
+    ->header('Cache-Control' , 'no-cache');
+});
+
+Route::get('/ViewsHead', function(){
+    return response()
+    ->view('welcome')
+    ->header('X-app-name', 'Viewheader');
+});
+
 ?>
