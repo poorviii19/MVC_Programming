@@ -301,4 +301,44 @@ Route::get('/delete-cookie', function () {
 // Cookie::queue()     → global / flexible
 // Cookie::get()       → read cookie
 // Cookie::forget()    → delete cookie
+
+
+// JSON responses:
+// A JSON response means: You are sending structured data instead of HTML/text.
+
+Route::get('/jsonres', function(){
+    return response()->JSON([
+        "name"=>"Haina",
+        "age"=>"21",
+    ]);
+});
+
+
+// with status code:
+Route::get('/status', function(){
+    return response()->JSON([
+        'message'=>'Success',
+        'data'=>'user fetched',
+    ],200);
+});
+
+Route::get('/error', function () {
+    return response()->json([
+        'status' => false,
+        'message' => 'Something went wrong'
+    ], 500);
+});
+
+
+// multiple values:
+Route::get('/profile', function () {
+    return response()->json([
+        'status' => true,
+        'user' => [
+            'name' => 'Haina',
+            'email' => 'haina@example.com'
+        ],
+        'skills' => ['Laravel', 'C++', 'React']
+    ]);
+});
 ?>
