@@ -205,4 +205,30 @@ Route::get('/api/students', function(){
     ])->Header('Json-Data','laravel');
 });
 
+// example:
+Route::get('/info', function(){
+    return response()
+    ->view('home')
+    ->header('X-App-Name', 'My-laravel_App');
+});
+
+Route::get('/json-data', function(){
+    return response()->json([
+        'name'=>'ABC',
+        'age'=>'24',
+        'dept'=>'CSE',
+    ])->header('X-Source','API')
+    ->header('Cache-Control', 'not-cached');
+});
+
+
+
+Route::get('/multihead', function () {
+    return response('OK')->withHeaders([
+        'Custom1' => 'ABC',
+        'Custom2' => 'NOP',
+        'Custom3' => 'XYZ',
+    ]);
+});
+
 ?>
