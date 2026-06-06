@@ -145,4 +145,26 @@ Route::get('/prac', function(){
     return view('prac');
 });
 
+// Headers: Extra Meta data
+//tell the browser things like:
+
+// what type of content it is
+// caching rules
+// authentication info
+// custom data
+
+//Responses: Attaching headers: basic syntax
+Route::get('/head', function(){
+    return response('Hello laravel')
+    ->header('Content-Type', 'text/plain');
+});
+
+// Multiple Headers:
+Route::get('/multi', function(){
+    return response("Custom Header")
+    ->header('Content-Type', 'text/plain')
+    ->header('X-App-name', 'MyLaravelApp')
+    ->header('X-version', '1.0');
+});
+
 ?>
