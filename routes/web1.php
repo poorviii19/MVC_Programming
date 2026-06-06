@@ -341,4 +341,39 @@ Route::get('/profile', function () {
         'skills' => ['Laravel', 'C++', 'React']
     ]);
 });
+
+Route::get('/api/nested', function () {
+    return response()->json([
+        'status' => true,
+        'user' => [
+            'name' => 'Haina',
+            'email' => 'haina@example.com',
+            'age' => 21,
+            'city' => 'India'
+        ],
+        'skills' => [
+            'Laravel',
+            'C++',
+            'JavaScript',
+            'React'
+        ],
+        'education' => [
+            [
+                'level' => '10th',
+                'year' => 2019,
+                'percentage' => 92
+            ],
+            [
+                'level' => '12th',
+                'year' => 2021,
+                'percentage' => 88
+            ],
+            [
+                'level' => 'B.Tech',
+                'year' => 2025,
+                'percentage' => 85
+            ]
+        ]
+    ]);
+});
 ?>
