@@ -376,4 +376,30 @@ Route::get('/api/nested', function () {
         ]
     ]);
 });
+
+
+
+// Named Routes:A named route is simply a route with a label (name).
+// Instead of using URL:  /user/profile
+// You use: profile
+
+
+// creation:
+Route::get('/dashboard', function(){
+    return 'Dashboard page';
+})->name('dash');
+
+// redirection using named route:
+Route::get('/home', function(){
+    return redirect()->route('dash');
+});
+
+//Advantage:
+// If URL changes:
+// Route::get('/admin/dashboard', function () {
+//     return "Dashboard";
+// })->name('dashboard');
+
+// Your redirect STILL works
+// No code change needed anywhere
 ?>
