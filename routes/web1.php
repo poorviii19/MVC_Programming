@@ -402,4 +402,14 @@ Route::get('/home', function(){
 
 // Your redirect STILL works
 // No code change needed anywhere
+
+// named routes with parameters and redirecting with parameters:
+
+Route::get('/named/{id}', function($id){
+    return "User id: $id";
+})->name('user.profile');
+
+Route::get('/redi/{id}', function($id){
+    return redirect()->route('user.profile', ['id' => $id]);
+});
 ?>
