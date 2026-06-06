@@ -231,4 +231,74 @@ Route::get('/multihead', function () {
     ]);
 });
 
+
+// Responses -> atatching cookies:
+// A cookie is:
+// Key-value data stored in the browser and automatically sent to the server.
+
+// setting cookies:
+// basic syntax:
+ROute::get('/setCookie', function(){
+    return response('Cookie is set')
+    ->cookie('name','ABC',40);
+});
+
+use Illuminate\Http\Request;
+
+Route::get('/getCookie', function(request $request){
+    return $request->cookie('name');
+});
+
+Route::get('/multi-cookie', function () {
+    return response('Multiple cookies set')
+        ->cookie('user', 'Haina', 60)
+        ->cookie('role', 'student', 60)
+        ->cookie('theme', 'dark', 60);
+});
+
+
+Route::get('/getCookies', function(Request $request){
+    return [
+        'user'  => $request->cookie('user'),
+        'role'  => $request->cookie('role'),
+        'theme' => $request->cookie('theme'),
+    ];
+});
+
+Route::get('/getCookiess', function (Request $request) {
+    return $request->cookies->all();
+});
+
+
+// using cookie facades
+
+use Illuminate\Support\Facades\Cookie;
+
+Route::get('/cookie-facade', function () {
+    Cookie::queue('city', 'India', 60);
+
+    return response('Cookie queued');
+});
+
+Route::get('/get', function () {
+    return Cookie::get('city');
+});
+
+
+// deleting cookie
+Route::get('/delete', function () {
+    Cookie::queue(Cookie::forget('name'));
+
+    return "Cookie deleted";
+});
+
+
+Route::get('/delete-cookie', function () {
+    return response('Cookie deleted')
+        ->cookie('city', '', -1);
+});
+// response()->cookie() → direct response
+// Cookie::queue()     → global / flexible
+// Cookie::get()       → read cookie
+// Cookie::forget()    → delete cookie
 ?>
