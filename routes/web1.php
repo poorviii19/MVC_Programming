@@ -181,4 +181,28 @@ Route::get('/ViewsHead', function(){
     ->header('X-app-name', 'Viewheader');
 });
 
+// redirect with Headers:
+Route::get('/redirect', function(){
+    return redirect('/ViewsHead')
+    ->header('X-redirect-reason','Page moved permanently');
+});
+
+
+// API style responses:
+Route::get('/api/user', function(){
+    return response() -> json([
+        'name' => 'XYZ',
+        'role'=> 'Student',
+    ])
+    ->Header('X-Powered-By', 'Laravel');
+});
+
+
+Route::get('/api/students', function(){
+    return response()->json([
+        'name' => 'ABC',
+        'Role'=>'Student',
+    ])->Header('Json-Data','laravel');
+});
+
 ?>
