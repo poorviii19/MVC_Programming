@@ -412,4 +412,68 @@ Route::get('/named/{id}', function($id){
 Route::get('/redi/{id}', function($id){
     return redirect()->route('user.profile', ['id' => $id]);
 });
+
+
+
+// Secured Routes:
+// Done mainly using middlewares:
+// Requires login(authentication), roles, permissions, authorization
+// auth middleware:
+
+// syntax:
+
+// Route::get('/login', function(){
+    // return view('dashboard');
+// })->middleware('auth');
+
+
+// protect multiple routes:
+// syntax:
+
+// Route::middleware('auth')->group(function(){
+    // Route::get('/dashb', function(){
+    //     return view('dashboard');
+    // })
+
+    //  Route::get('/profile', function () {
+    //     return view('profile');
+    // });
+
+// });
+
+
+// controller based syntax:
+
+// Route::middleware('auth')->group(function(){
+//     Route::get('/dashb', [DashController::class, 'index']);
+// });
+
+
+// 6. Guest-Only Routes (guest middleware)
+
+// Used for login/register pages.
+
+// Route::middleware('guest')->group(function () {
+//     Route::get('/login', [AuthController::class, 'login']);
+//     Route::get('/register', [AuthController::class, 'register']);
+// });
+
+// Behavior:
+// Logged-in user → blocked (redirected away)
+// Guest → allowed
+
+// 7. Role-Based Secured Routes (Advanced Level)
+
+// Laravel doesn’t include roles by default, but you implement via middleware.
+
+// Example:
+// Route::middleware(['auth', 'admin'])->group(function () {
+//     Route::get('/admin/dashboard', function () {
+//         return view('admin.dashboard');
+//     });
+// });
+
+// Meaning:
+// Must be logged in
+// Must be admin
 ?>
