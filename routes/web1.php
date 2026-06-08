@@ -560,4 +560,50 @@ Route::group(['prefix' => 'admin'], function () {
 // ✔ URLs:
 // /admin/users
 // /admin/users/create
+
+
+use Illuminate\Support\Facades\URL;
+
+// full url
+Route::get('/current', function(){
+
+    return URL::current();
+});
+
+
+// /full url inlcluding query parameters:
+Route::get('/full', function(){
+    return URL::full();
+});
+
+
+
+Route::get('/search', function () {
+    return [
+        'current_url' => URL::current(),
+        'full_url' => URL::full(),
+    ];
+});
+
+// previous url
+Route::get('/prev', function(){
+    return URL::previous();
+});
+
+Route::get('/page1', function () {
+    return "This is Page 1";
+});
+
+Route::get('/page2', function () {
+    return "You came from: " . URL::previous();
+});
+
+
+// alternative helper:
+Route::get('/profile', function () {
+    return request()->url();
+});
+Route::get('/profiles', function () {
+    return request()->fullUrl();
+});
 ?>
