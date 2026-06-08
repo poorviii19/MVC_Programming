@@ -476,4 +476,36 @@ Route::get('/redi/{id}', function($id){
 // Meaning:
 // Must be logged in
 // Must be admin
+
+
+/ /parameter constraints:
+Route::get('/constraint/{id?}', function($id = NULL){
+    return $id ? "User id is : $id" : "NULL";
+})->where('id', '[0-9]+');
+
+Route::get('/constraint1/{abc?}', function($abc =  NULL){
+    return $abc ? "Product name is: $abc" : "Product name is null";
+})->whereAlpha('abc' , '[A-Z]+');
+
+
+// Multiple Constraints:
+Route::get('/const/{id}/name/{abc}', function($id, $abc){
+    return "Product id: $id, Product name: $abc";
+})->where([
+    'id'=> '[0-9]+',
+    'abc'=>'[A-Za-z]+'
+]);
+
+// Shortcuts:
+Route::get('/pro/{id}',function($id){
+    return "Product id: $id";
+})->whereNumber('id');
+
+// Other shortcuts:
+
+// ->whereAlpha('name');
+// ->whereAlphaNumeric('code');
+// ->whereUuid('uuid');
+
+Route::get('/admin/user/{id}', [UserController::class, 'show'])->whereNumber('id');
 ?>
