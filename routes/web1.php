@@ -508,4 +508,56 @@ Route::get('/pro/{id}',function($id){
 // ->whereUuid('uuid');
 
 Route::get('/admin/user/{id}', [UserController::class, 'show'])->whereNumber('id');
+
+
+
+Route::group(['prefix' => 'admins'], function () {
+    Route::get('/dashbo', function () {
+        return "Admin Dashboard";
+    });
+
+    Route::get('/use', function () {
+        return "Admin Users";
+    });
+});
+
+
+// 3. Name Prefix Group (Best Practice for Large Apps)
+
+// Used for route naming.
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::get('/dashbo', function () {
+        return "Dashboard";
+    })->name('dashboard');
+
+    Route::get('/userss', function () {
+        return "Users";
+    })->name('users');
+});
+
+// Controller grouping
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/das', [UserController::class, 'profile']);
+    Route::get('/userss', [UserController::class, 'profile']);
+});
+
+
+// 🔷 6. Nested Route Groups (Advanced Structure)
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::group(['prefix' => 'users'], function () {
+        Route::get('/list', function () {
+            return "User List";
+        });
+
+        Route::get('/create', function () {
+            return "Create User";
+        });
+    });
+
+});
+// ✔ URLs:
+// /admin/users
+// /admin/users/create
 ?>
